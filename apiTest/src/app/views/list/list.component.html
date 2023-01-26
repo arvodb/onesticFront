@@ -1,7 +1,7 @@
-<p>works</p>
+<p><a href="detail">Detail</a></p>
 <table>
   <tr *ngFor="let pokemon of pokemonList">
-    <td ><a href="{{pokemon.url}}">{{pokemon.name}}</a></td>
+    <td ><a href="detail/{{pokemon.name}}">{{pokemon.name}}</a></td>
   </tr>
 </table>
 

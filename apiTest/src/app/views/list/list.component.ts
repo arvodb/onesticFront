@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { Detail, List } from 'src/app/interface/list';
-import { Pokemon } from 'src/models';
-import { PokemonClient } from 'src/clients';
+
+
 
 
 @Component({
@@ -11,9 +11,10 @@ import { PokemonClient } from 'src/clients';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent {
-  constructor(public servicio: DataService,public pokemonClient : PokemonClient) { }
+  constructor(public servicio: DataService) { }
 
   public pokemonList : Detail[] = [];
+  public pokemonName : string = '';
   public getPokemonList(){
     this.servicio.getPokemonList().subscribe(response => {
       this.pokemonList = response.results;
@@ -22,6 +23,6 @@ export class ListComponent {
 
   ngOnInit() : void
   {
-
+    this.getPokemonList();
   }
 }
