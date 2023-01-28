@@ -9,7 +9,9 @@ import { ActivatedRoute } from '@angular/router';
 export class DetailComponent {
   constructor(private pokName: ActivatedRoute){}
 
-  public pokemonName = this.pokName.snapshot.paramMap.get('pokemonName');
+  public pokemonName : string | null = ''
   ngOnInit(){
+    this.pokemonName = this.pokName.snapshot.paramMap.get('pokemonName');
+
   }
 }

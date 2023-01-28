@@ -1,7 +1,10 @@
-<p><a href="detail">Detail</a></p>
+<h1 (click)="console()">console.log</h1>
+
+<button (click)="cntrlPages(false)">prev</button>
+<button (click)="cntrlPages(true)">next</button>
 <table>
   <tr *ngFor="let pokemon of pokemonList">
-    <td ><a href="detail/{{pokemon.name}}">{{pokemon.name}}</a></td>
+    <td ><img width="150px" src="{{pokemon.sprite}}"><a href="detail/{{pokemon.name}}">{{pokemon.name}}</a> id: {{pokemon.id}}| type : <span *ngFor="let type of pokemon.type">{{type.type.name}} </span></td>
   </tr>
 </table>
 
