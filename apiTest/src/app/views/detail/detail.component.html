@@ -1,2 +1,25 @@
 <p><a href="list">List</a></p>
-<p>{{pokemonName}}</p>
+<p>{{pokemonBasics.id}}</p>
+<table>
+  <tr>
+    <td >
+      <img width="150px" src="{{pokemonBasics.sprite}}">
+      <a href="detail/{{pokemonBasics.id}}">{{pokemonBasics.name}}</a>
+       id: {{pokemonBasics.id}}|
+       type : <span *ngFor="let type of pokemonBasics.type">{{type.type.name}} </span>
+    </td>
+  </tr>
+</table>
+
+<div>
+  <p>{{pokemonDetail.id}}</p>
+  <p>{{pokemonDetail.genera}}</p>
+  <p>{{pokemonDetail.flavourText}}</p>
+  <p>{{pokemonDetail.habitat}}</p>
+  <p>{{pokemonDetail.region}}</p>
+  <p>{{pokemonDetail.height}}</p>
+  <p>{{pokemonDetail.weight}}</p>
+  <p *ngFor="let evo of pokemonDetail.evolution">
+    <span>{{evo}} ></span>
+  </p><br>
+</div>

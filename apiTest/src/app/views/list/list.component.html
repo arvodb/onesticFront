@@ -4,7 +4,7 @@
 <button (click)="cntrlPages(true)">next</button>
 <table>
   <tr *ngFor="let pokemon of pokemonList">
-    <td ><img width="150px" src="{{pokemon.sprite}}"><a href="detail/{{pokemon.name}}">{{pokemon.name}}</a> id: {{pokemon.id}}| type : <span *ngFor="let type of pokemon.type">{{type.type.name}} </span></td>
+    <td ><img width="150px" src="{{pokemon.sprite}}"><a href="detail/{{pokemon.id}}">{{pokemon.name}}</a> id: {{pokemon.id}}| type : <span *ngFor="let type of pokemon.type">{{type.type.name}} </span></td>
   </tr>
 </table>
 
