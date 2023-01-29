@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 
 import { Detail, List } from 'src/app/interface/list';
-import { Sprites,Type } from 'src/app/interface/pokemon';
 import { ListPokemonInterface } from 'src/app/interface/listPokemonInterface';
 
 import { takeUntil } from 'rxjs';
@@ -28,21 +27,19 @@ export class ListComponent {
   public pokemonListRequest :  Detail[] = [];
   public pokemonName: string = '';
   public pokemonUrl: string = '';
+
   public listPokemon() {
     this.servicio.getPagination(this.pag.offset, this.pag.limit).subscribe((response) => {
       this.pokemonListRequest = response.results;
       this.pag.total = Math.floor(response.count / this.pag.limit);
       this.pokemonList = [];
       this.pokemonListRequest.map((v) => {
-        this.servicio.getInfoOnePokemon(v.url).subscribe((response) => {
-          //let fancySprite : string | undefined = response.sprites.versions.GenerationI.RedBlue.front_default;
-          //let standardSprite = response.sprites.other.OfficialArtwork;
+      this.servicio.getInfoOnePokemon(v.url).subscribe((response) => {
 
             this.pokemonList.push({
               id: response.id,
               name: response.name,
               type: response.types,
-              //sprite : response.sprites.other?.['official-artwork'].front_default
               sprite : (response.id < 151)
                               ? 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/transparent/'+response.id+'.png'
                               : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+response.id+'.png'
