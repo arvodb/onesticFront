@@ -25,7 +25,7 @@ export class NavListComponent {
   public listFav() : void
   {
     this.fav = !this.fav;
-    this.listFavourites.emit()
+    this.listFavourites.emit(this.fav)
   }
 
   public isNext(bool:boolean) : void
@@ -42,10 +42,12 @@ export class NavListComponent {
       root.style.setProperty('--bg-bright', '#272727');
       root.style.setProperty('--main-txt-bright', '#EDEDED');
       root.style.setProperty(' --bg-components-bright', '#605E5E');
+      root.style.setProperty('--bg-components-dark', '#EDEDED');
     }else {
       root.style.setProperty('--bg-bright', '#FEFEFE');
       root.style.setProperty('--main-txt-bright', '#302828');
       root.style.setProperty('--bg-components-bright', '#EDEDED');
+      root.style.setProperty('--bg-components-dark', '#605E5E');
     }
     //this.darkService.toggleDark()
   }
@@ -53,6 +55,8 @@ export class NavListComponent {
   ngOnInit(){
     const data = localStorage.getItem('info');
     this.dark = data ? !JSON.parse(data).dark : true;
+    this.fav = data ? JSON.parse(data).listFav : false;
+    this.view = data ? JSON.parse(data).view : false;
   }
 
 }

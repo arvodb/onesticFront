@@ -30,11 +30,13 @@ export class ListComponent {
   public pokemonListRequest: Detail[] = [];
   public pokemonName: string = '';
   public pokemonUrl: string = '';
-  public localStorage: { pagination: number, fav: number[], dark: boolean,listFav:boolean } = {
+  public localStorage: { pagination: number, fav: number[], dark: boolean,listFav:boolean,urlImg: string,view:boolean } = {
     pagination: 1,
     fav: [],
     dark: false,
-    listFav: false
+    listFav: false,
+    urlImg: '',
+    view:false
   }
 
   @Output() darkEmision = new EventEmitter<boolean>();
@@ -97,9 +99,10 @@ export class ListComponent {
     this.pag.current--;
     (this.pag.current >= 1) ? this.pag.offset -= this.pag.limit : this.pag.current = 1
   }
-    this.localStorage.pagination = this.pag.current;
+  this.localStorage.pagination = this.pag.current;
   this.saveLocalStorage();
   this.listPokemon();
+  console.log(this.pag)
 }
 
   public darkMode(bool: boolean): void {
@@ -114,23 +117,26 @@ export class ListComponent {
   localStorage.setItem('info', JSON.stringify(this.localStorage));
 }
 
-  public getLocalStorage(): { pagination: number, fav: number[], dark: boolean, listFav:boolean } {
+  public getLocalStorage(): { pagination: number, fav: number[], dark: boolean, listFav:boolean,urlImg: string,view:boolean }
+  {
   const data = localStorage.getItem('info');
   return data ? JSON.parse(data) : this.localStorage;
 }
   public checkThisLocal(): void {
   this.localStorage = this.getLocalStorage();
 }
-public listFavourites(): void
+public listFavourites(bool : boolean): void
 {
   console.log('hola')
     this.localStorage.listFav = !this.getLocalStorage().listFav;
     this.saveLocalStorage();
-    this.listPokemon(this.localStorage.listFav);
+    this.listPokemon(bool);
 }
 public switchView() : void
 {
   this.views = !this.views;
+  this.localStorage.view = this.views;
+  this.saveLocalStorage();
   console.log(this.views)
 
 }
@@ -140,10 +146,10 @@ ngOnInit(): void {
 
   const pagUrl = this.urlPage.snapshot.paramMap.get('urlPage');
   if(pagUrl) {
-    this.localStorage.pagination = parseInt(pagUrl);
+    this.localStorage.pagination = (parseInt(pagUrl) == 0) ? 1 : parseFloat(pagUrl);
     this.saveLocalStorage();
   }
-    this.pag.current = (pagUrl) ? parseInt(pagUrl) : this.getLocalStorage().pagination;
+    this.pag.current = (pagUrl) ? this.localStorage.pagination : this.getLocalStorage().pagination;
   this.pag.offset = (this.pag.current - 1) * this.pag.limit;
   this.listPokemon();
 

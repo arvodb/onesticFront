@@ -3,13 +3,13 @@
 <app-nav-list
   [pag]="pag"
   (pagination)="cntrlPages($event)"
-  (listFavourites)="listFavourites()"
+  (listFavourites)="listFavourites($event)"
   (sendview)="switchView()"
 
 ></app-nav-list>
 <div class="container-fluid">
   <div class="row py-2">
-    <div  *ngFor="let pokemon of pokemonList" class="{{!views ? 'col-lg-3 col-md-6 col-sm-6 py-3' : 'col-12 justify-content-center' }}">
+    <div  *ngFor="let pokemon of pokemonList" class="{{!views ? 'col-lg-3 col-md-6 col-sm-6 py-3' : 'col-12 justify-content-center py-5' }}">
       <a class="justify-content-center">
           <app-card class="animated"
           [pokemonId]="pokemon.id"
@@ -24,6 +24,3 @@
     </div>
   </div>
 </div>
-
-
-<!-- (sendFav)="saveFavLocalStorage($event)" -->

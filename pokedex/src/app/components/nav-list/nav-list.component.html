@@ -2,13 +2,13 @@
   <div class="col-sm-6">
     <nav>
       <ul class="pagination pagination-sm">
-        <div class="{{fav?'': 'animated'}}{{pag.current <= 1?'animated': ''}}">
+        <div class="{{fav?'': 'animated'}}">
           <li class="page-item">
             <span (click)="isNext(false)" [routerLink]="['/list/'+(pag.current-1).toString()]" class="page-link arrow-button arrow{{!fav?'': 'disabled'}}{{pag.current <= 1?'disabled': ''}} m-2"><img class="arrow-nav"
                 src="../../../assets/img/arrow-l.png"></span>
           </li>
         </div>
-        <div class="{{fav?'': 'animated'}}{{pag.current !== pag.total?'animated': ''}}">
+        <div class="{{fav?'': 'animated'}}">
           <li class="page-item ">
             <span (click)="isNext(true)" [routerLink]="['/list/'+(pag.current+1).toString()]" class="page-link arrow-button arrow m-2 {{!fav?'': 'disabled'}}"><img class="arrow-nav"
                 src="../../../assets/img/arrow-r.png"></span>

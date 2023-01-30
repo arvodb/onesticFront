@@ -29,4 +29,11 @@ export class CardComponent {
     }
     this.sendFavourite.emit();
   }
+  public savePokemon() : void
+  {
+    const data = localStorage.getItem('info');
+    let local =  data ? JSON.parse(data) : '';
+    local.urlImg = this.pokemonSprite;
+    localStorage.setItem('info',JSON.stringify(local));
+  }
 }

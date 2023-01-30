@@ -10,13 +10,12 @@
       <p class="pokemon-name">#{{pokemonDetail.id}} {{pokemonBasics.name}}</p>
     </div>
     <div class="col-6 d-flex justify-content-end">
-      <div clas="align-self-center">save</div>
-      <img class="favourite mx-2" src="../../../assets/img/star-white.png">
+
     </div>
   </div>
   <div class="row">
     <div class="col-12 col-sm-5">
-      <div class="main-image" ></div>
+      <div class="main-image" [ngStyle]="{'background-image':'url('+imgUrl+')'}"></div>
     </div>
     <div class="col-12 col-sm-12 col-md-6 body-text">
       <p>{{pokemonDetail.genera}}</p>

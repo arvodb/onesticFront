@@ -13,7 +13,7 @@ import { DetailPokemonInterface, ListPokemonInterface } from 'src/app/interface/
 export class DetailComponent {
   constructor(private pokemonId: ActivatedRoute, public servicio: DataService) { } //recibe por ur.
 
-  public pokemonIdUrl: string | null = ''
+  public imgUrl : string = ''
   public pokemonBasics: ListPokemonInterface = { id: 0, name: '', type: [], sprite: '', fav: false };
   public pokemonDetail : DetailPokemonInterface = {id: 0}
   public pagUrl : string = '';
@@ -21,7 +21,6 @@ export class DetailComponent {
   public getPokemonBasics() : void {
 
     this.servicio.getInfoOnePokemon('', this.pokemonBasics.id, true).subscribe((response) => {
-
       this.pokemonBasics = {
         id: response.id,
         name: response.name,
@@ -68,9 +67,14 @@ export class DetailComponent {
     const idUrl = this.pokemonId.snapshot.paramMap.get('pokemonid');
     this.pagUrl =(idUrl) ? idUrl.toString() : '';
     this.pokemonBasics.id = (idUrl) ? parseInt(idUrl) : 0;
+
     this.getPokemonBasics();
     this.getPokemonDetailInfo(this.pokemonBasics.id);
     console.log(this.pokemonDetail);
+
+    const data = localStorage.getItem('info');
+    let local =  data ? JSON.parse(data) : '';
+    this.imgUrl = local.urlImg;
 
   }
 }

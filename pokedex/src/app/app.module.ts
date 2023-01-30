@@ -10,10 +10,6 @@ import { DetailComponent } from './views/detail/detail.component';
 import { HeaderListComponent } from './components/header-list/header-list.component';
 import { NavListComponent } from './components/nav-list/nav-list.component';
 import { CardComponent } from './components/card/card.component';
-import { ListCardsComponent } from './components/list-cards/list-cards.component';
-/* import { BodyDetailComponent } from './components/body-detail/body-detail.component';
-import { NavDetailComponent } from './components/nav-detail/nav-detail.component'; */
-
 
 @NgModule({
     declarations: [
@@ -22,8 +18,7 @@ import { NavDetailComponent } from './components/nav-detail/nav-detail.component
       DetailComponent,
       HeaderListComponent,
       NavListComponent,
-      CardComponent,
-      ListCardsComponent,
+      CardComponent
 
     ],
     providers: [],
