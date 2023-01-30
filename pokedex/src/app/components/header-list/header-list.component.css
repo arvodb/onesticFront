@@ -46,20 +46,26 @@
 }
 @media (max-width: 1000px){
   .image-header{
-    transform: translate(0px,-40px);
+    transform: translate(-30px,-40px);
+    animation: none;
   }
+
 }
-@media (max-width: 770px) {
+@media (max-width: 750px) {
   .image-header{
     width: 100%;
-    transform: translate(0px,0px)
+    transform: translate(-20px,-10px);
+    animation: none;
   }
 }
 @media (max-width:581px){
   .image-header{
     position: absolute;
     top: 20px;
+    left:40px;
     width: 50px;
+    animation: none;
+
   }
   .subtitle-header{
     margin-bottom: -20px;

@@ -1,3 +1,62 @@
-<p>detail works!</p>
-<app-nav-detail></app-nav-detail>
-<app-body-detail></app-body-detail>
+<div class="container pt-5">
+  <div class="row d-flex justify-content-start" [routerLink]="['/list']">
+    <div class="arrow-left"></div>
+    <div class="col back-link"><a [routerLink]="['']">go back</a></div>
+  </div>
+</div>
+<div class="container main-container">
+  <div class="row d-flex justify-content-start">
+    <div class="col-6">
+      <p class="pokemon-name">#{{pokemonDetail.id}} {{pokemonBasics.name}}</p>
+    </div>
+    <div class="col-6 d-flex justify-content-end">
+      <div clas="align-self-center">save</div>
+      <img class="favourite mx-2" src="../../../assets/img/star-white.png">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-sm-5">
+      <div class="main-image" ></div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-6 body-text">
+      <p>{{pokemonDetail.genera}}</p>
+      <p class="flavour-text pb-1">{{pokemonDetail.flavourText}}</p>
+
+      <hr class="py-1">
+
+      <div class="d-flex justify-content-between">
+        <div class="pack align-self-center">
+          <div class="mb-3">
+            <div class="title py-1">Habitat</div>
+            <div class="data">{{pokemonDetail.habitat}}</div>
+          </div>
+          <div class="mb-3">
+            <div class="title py-1">Region</div>
+            <div class="data">{{pokemonDetail.region}}</div>
+          </div>
+        </div>
+        <div class="pack align-self-center pe-4">
+          <div class="mb-3">
+            <p class="title">Size</p>
+            <p class="data">{{pokemonDetail.height}} m</p>
+            <p class="title">weight</p>
+            <p class="data">{{pokemonDetail.weight}} kg</p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="py-1">
+      <p class="title">Evolutions</p>
+      <p>
+        <span *ngFor="let evo of pokemonDetail.evolution; index as i">
+          <span *ngIf="i < pokemonDetail.evolution.length-1">
+            {{evo}} >
+          </span>
+          <span *ngIf="i==pokemonDetail.evolution.length-1">
+            {{evo}}
+          </span>
+        </span>
+      </p>
+    </div>
+  </div>
+</div>

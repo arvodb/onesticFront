@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 
 import { DetailPokemonInterface, ListPokemonInterface } from 'src/app/interface/listPokemonInterface';
-import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-detail',
@@ -65,8 +64,6 @@ export class DetailComponent {
     this.servicio.getRegion(id).subscribe ((response) => {
       this.pokemonDetail.region = response.regions[0].name;
     })
-
-
   }
 
   ngOnInit(){

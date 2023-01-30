@@ -8,11 +8,18 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class AppComponent {
   title = 'pokedex';
   public dark : boolean = false;
-  @Output() darkEmision = new EventEmitter<boolean>();
-  public darkMode(bool : boolean) : void
+  public background : string[]= ['inherit','#302828']
+  public color : string = '';
+
+  public darkMode() : void
   {
-    this.dark = bool
-    this.darkEmision.emit(this.dark);
+    this.dark = !this.dark
+    if(this.dark){
+      this.color = this.background[1];
+    } else {
+      this.color = this.background[0];
+    }
+
   }
 
 }

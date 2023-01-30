@@ -7,16 +7,26 @@ import { Type } from 'src/app/interface/pokemon';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent {
+  @Input() view : boolean = false;
   @Input() pokemonId : number | null  = 0;
   @Input() pokemonName : string = '';
   @Input() pokemonTypes : Type[] = []
   @Input() pokemonSprite? : string = '';
   @Input() fav? : boolean = false;
-  @Output() sendfav = new EventEmitter<number | null>()
+  @Output() sendFavourite = new EventEmitter<boolean>()
 
-  public saveFav() : void
+  public saveFav(id : number | null )
   {
     this.fav = !this.fav;
-    this.sendfav.emit(this.pokemonId)
+    const data = localStorage.getItem('info');
+    let local =  data ? JSON.parse(data) : '';
+    if(this.fav){
+      local.fav.push(id)
+      localStorage.setItem('info',JSON.stringify(local));
+    } else {
+      local.fav = local.fav.filter( (v: number | null) => v!==id );
+      localStorage.setItem('info',JSON.stringify(local));
+    }
+    this.sendFavourite.emit();
   }
 }

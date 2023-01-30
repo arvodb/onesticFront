@@ -31,7 +31,7 @@ export class DataService {
   public getInfoOnePokemon(url : string = '',id : number | string | null = 0, hasId:boolean = false) : Observable<Pokemon>{
     return (hasId) ? this.http.get<Pokemon>(this.apiUrlList+id) : this.http.get<Pokemon>(url);
   }
-  //public getInfoOnePokemonSpecies(id : number) : Observable
+
   public getRegion(id : number) : Observable<PokedexVersionGroups>{
     return this.http.get<PokedexVersionGroups>(this.apiRegion+id);
   }

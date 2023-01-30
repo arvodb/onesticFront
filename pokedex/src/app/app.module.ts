@@ -10,26 +10,28 @@ import { DetailComponent } from './views/detail/detail.component';
 import { HeaderListComponent } from './components/header-list/header-list.component';
 import { NavListComponent } from './components/nav-list/nav-list.component';
 import { CardComponent } from './components/card/card.component';
-import { BodyDetailComponent } from './components/body-detail/body-detail.component';
-import { NavDetailComponent } from './components/nav-detail/nav-detail.component';
+import { ListCardsComponent } from './components/list-cards/list-cards.component';
+/* import { BodyDetailComponent } from './components/body-detail/body-detail.component';
+import { NavDetailComponent } from './components/nav-detail/nav-detail.component'; */
+
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ListComponent,
-    DetailComponent,
-    HeaderListComponent,
-    NavListComponent,
-    CardComponent,
-    BodyDetailComponent,
-    NavDetailComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+      AppComponent,
+      ListComponent,
+      DetailComponent,
+      HeaderListComponent,
+      NavListComponent,
+      CardComponent,
+      ListCardsComponent,
+
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+    ]
 })
 export class AppModule { }

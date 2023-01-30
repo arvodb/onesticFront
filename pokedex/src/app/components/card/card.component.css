@@ -6,13 +6,7 @@
   border-radius: 5px;
   transition: all 0.3s ease;
 }
-/* .card-pokemon :hover{
-  cursor:pointer;
-  transform: translateY(-15px);
-}
-.card-pokemon:active{
-  transform: translateY(-5px);
-} */
+
 .card-header{
   height: 30px;
 }
@@ -21,7 +15,16 @@
   margin-bottom: 10px;
 }
 .card-sprite {
-  background-image: url(../../../assets/img/bulvasaur.png);
+  background-image: url('../../../assets/img/bulvasaur.png');
+  background-size: auto 100%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  width: 150%;
+  height: 242px;
+  transform: translate(0px,0px);
+}
+.list-sprite {
+  background-image: url('../../../assets/img/bulvasaur.png');
   background-size: auto 100%;
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -57,7 +60,20 @@ img.card-pokeball{
 .card-body{
   padding:0px 15px;
 }
-
+.list-pokemon {
+  max-width: 600px;
+  max-height: 150px;
+ 
+}
+.list-title {
+  margin-left:30px;
+}
+.list-pokeball {
+  width:60px;
+}
+.list-name {
+  font-size: 30px;
+}
 
 
 

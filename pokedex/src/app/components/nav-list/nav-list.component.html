@@ -2,15 +2,15 @@
   <div class="col-sm-6">
     <nav>
       <ul class="pagination pagination-sm">
-        <div class="animated">
+        <div class="{{fav?'': 'animated'}}{{pag.current <= 1?'animated': ''}}">
           <li class="page-item">
-            <span (click)="isNext(false)" [routerLink]="['/list/'+(pag.current-1).toString()]" class="page-link arrow-button arrow m-2"><img class="arrow-nav"
+            <span (click)="isNext(false)" [routerLink]="['/list/'+(pag.current-1).toString()]" class="page-link arrow-button arrow{{!fav?'': 'disabled'}}{{pag.current <= 1?'disabled': ''}} m-2"><img class="arrow-nav"
                 src="../../../assets/img/arrow-l.png"></span>
           </li>
         </div>
-        <div class="animated">
+        <div class="{{fav?'': 'animated'}}{{pag.current !== pag.total?'animated': ''}}">
           <li class="page-item ">
-            <span (click)="isNext(true)" [routerLink]="['/list/'+(pag.current+1).toString()]" class="page-link arrow-button arrow m-2"><img class="arrow-nav"
+            <span (click)="isNext(true)" [routerLink]="['/list/'+(pag.current+1).toString()]" class="page-link arrow-button arrow m-2 {{!fav?'': 'disabled'}}"><img class="arrow-nav"
                 src="../../../assets/img/arrow-r.png"></span>
           </li>
         </div>
@@ -23,8 +23,8 @@
       <ul class="pagination pagination-sm">
         <div class="animated">
           <li class="page-item">
-            <span class="page-link img-button arrow " href="#" tabindex="-1"><img class="img-button-nav"
-                src="../../../assets/img/list-button-black.png"></span>
+            <span (click)="switchViews()" class="page-link img-button arrow " href="#" tabindex="-1"><img class="img-button-nav"
+                src="../../../assets/img/{{view ? 'cuadricula-button-black.png':'list-button-black.png'}}"></span>
           </li>
         </div>
         <div class="animated">
@@ -36,8 +36,8 @@
         </div>
         <div class="animated">
           <li class="page-item">
-            <span (click)="darkMode(true)" class="page-link img-button arrow "  tabindex="-1"><img class="img-button-nav"
-                src="../../../assets/img/sun_white.png"></span>
+            <span (click)="darkMode(dark)" class="page-link img-button arrow "  tabindex="-1"><img class="img-button-nav"
+                src="{{!dark ? '../../../assets/img/sun_white.png' :'../../../assets/img/half-moon_black.png'}}"></span>
           </li>
         </div>
 
