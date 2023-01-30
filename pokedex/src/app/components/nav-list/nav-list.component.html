@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-sm-6">
+    <nav>
+      <ul class="pagination pagination-sm">
+        <div class="animated">
+          <li class="page-item">
+            <span (click)="isNext(false)" [routerLink]="['/list/'+(pag.current-1).toString()]" class="page-link arrow-button arrow m-2"><img class="arrow-nav"
+                src="../../../assets/img/arrow-l.png"></span>
+          </li>
+        </div>
+        <div class="animated">
+          <li class="page-item ">
+            <span (click)="isNext(true)" [routerLink]="['/list/'+(pag.current+1).toString()]" class="page-link arrow-button arrow m-2"><img class="arrow-nav"
+                src="../../../assets/img/arrow-r.png"></span>
+          </li>
+        </div>
+
+      </ul>
+    </nav>
+  </div>
+  <div class="col-sm-6">
+    <nav class="d-flex justify-content-end">
+      <ul class="pagination pagination-sm">
+        <div class="animated">
+          <li class="page-item">
+            <span class="page-link img-button arrow " href="#" tabindex="-1"><img class="img-button-nav"
+                src="../../../assets/img/list-button-black.png"></span>
+          </li>
+        </div>
+        <div class="animated">
+
+          <li class="page-item">
+            <span (click)="listFav()" class="page-link img-button arrow "><img class="img-button-nav"
+                src="{{fav ? '../../../assets/img/star-black.png' :'../../../assets/img/star-white.png'}}"></span>
+          </li>
+        </div>
+        <div class="animated">
+          <li class="page-item">
+            <span (click)="darkMode(true)" class="page-link img-button arrow "  tabindex="-1"><img class="img-button-nav"
+                src="../../../assets/img/sun_white.png"></span>
+          </li>
+        </div>
+
+
+      </ul>
+    </nav>
+  </div>
+</div>
+

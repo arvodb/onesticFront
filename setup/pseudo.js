@@ -20,3 +20,11 @@ TODO =>
     - Filtro favoritos => Necesario investigar.
 */
 
+
+/* 
+
+BIBLIOGRAFÍA!
+- ActivedRoutes angular => https://angular.io/api/router/ActivatedRoute 
+                        => https://stackoverflow.com/questions/34323480/in-angular-how-do-you-determine-the-active-routes
+- integarar bootstrap en angular => https://fbellod.medium.com/como-integrar-el-framework-bootstrap-en-un-proyecto-angular-a5d53fa79e03
+*/

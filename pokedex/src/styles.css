@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --bg-bright: #FEFEFE;
+  --bg-components-bright :#EDEDED;
+  --main-txt-bright: #302828;
+  --secoundary-txt-bright:#4E4E4E;
+}
+
+
+@font-face {
+  font-family: 'DotGothic16';
+  src: url(../src/assets/font/DotGothic16-Regular.ttf);
+}
+body {
+  font-family: 'DotGothic16',Arial, Helvetica, sans-serif;
+  letter-spacing:0.2em;
+  background-color: var(--bg-bright);
+  color:var(--main-txt-bright);
+  transition: 500ms;
+}
+a{
+  text-decoration: none;
+  color: var(--main-txt-bright);
+}
+a:hover{
+  color:var(--main-txt-bright)
+}
+.animated > * {
+  text-decoration: none;
+  color: var(--main-txt-bright);
+  transition: all 0.3s ease;
+}
+.animated :hover{
+  cursor:pointer;
+}
+.animated > *:hover{
+  transform: translateY(-10px);
+  background-color: var(--bg-bright)
+}
+

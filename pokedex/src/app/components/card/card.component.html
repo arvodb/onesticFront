@@ -1,0 +1,33 @@
+<div class="">
+  <div class="card-header d-flex justify-content-between d-flex align-items-center">
+    <p class="pokemon-id">#{{pokemonId}}</p>
+    <img (click)="saveFav()" class="" src="{{fav ? '../../../assets/img/star-black.png' :'../../../assets/img/star-white.png'}}" alt="">
+  </div>
+  <div class="card-pokemon" [routerLink]="['/detail/'+pokemonId]">
+  <div class="row d-flex justify-content-center">
+    <div class="card-sprite" [ngStyle]="{'background-image':'url('+pokemonSprite+')'}"><!-- backgroundImage --></div>
+    <div class="container card-title">
+      <div class="row d-flex justify-content-center">
+        <div class="col-3 d-flex justify-content-end align-self-center">
+          <img class="card-pokeball" src="../../../assets/img/poke-ball.png" alt="">
+        </div>
+        <div class="col-9 align-self-center">
+          <div class="pokemon-name">{{pokemonName}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="container card-body">
+      <hr class="my-3">
+      <div class="container ">
+        <div class="row">
+          <div class="col-lg-6 col-md-12"><p>Type:</p></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-12" *ngFor="let type of pokemonTypes"><p>{{type.type.name}}</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
