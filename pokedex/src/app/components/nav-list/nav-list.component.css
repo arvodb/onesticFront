@@ -1,0 +1,32 @@
+.page-link{
+  border-radius: 2px!important;
+  padding:8px 16px;
+  border: 5px solid var(--main-txt-bright);
+  font-size: 20px;
+  margin: 5px;
+}
+.page-number{
+  color: var(--main-txt-bright);
+  border: 0px solid var(--main-txt-bright);
+
+}
+  .page-number-selected{
+    color: var(--main-txt-bright);
+    border: 0px solid var(--main-txt-bright);
+    border-bottom: 5px solid var(--main-txt-bright);
+    border-radius:0px!important
+  }
+.arrow-button{
+  padding: 8px 9px 8px 9px;
+}
+.img-button{
+  padding: 6px 7px 6px 7px;
+}
+.img-button-nav{
+  width:30px;
+  display:flex;
+}
+.arrow-nav{
+  width:25px;
+  display:flex;
+}
