@@ -19,7 +19,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ListComponent {
   constructor(private urlPage: ActivatedRoute, public servicio: DataService) { }
-  public views : boolean = false //list
+  public views: boolean = false //list
   public pag: { offset: number, limit: number, current: number, total: number } = {
     offset: 0, //max value = 1260
     limit: 8,
@@ -30,51 +30,75 @@ export class ListComponent {
   public pokemonListRequest: Detail[] = [];
   public pokemonName: string = '';
   public pokemonUrl: string = '';
-  public localStorage: { pagination: number, fav: number[], dark: boolean,listFav:boolean,urlImg: string,view:boolean } = {
+  public localStorage: { pagination: number, fav: number[], dark: boolean, listFav: boolean, urlImg: string, view: boolean } = {
     pagination: 1,
     fav: [],
     dark: false,
     listFav: false,
     urlImg: '',
-    view:false
+    view: false
   }
 
-  @Output() darkEmision = new EventEmitter<boolean>();
+  public cntrlPages(isNext: boolean): void {
+    if (isNext) {
+      this.pag.current++;
+      (this.pag.current < this.pag.total) ? this.pag.offset += this.pag.limit : this.pag.current = this.pag.total;
+    } else if (!isNext) {
+      this.pag.current--;
+      (this.pag.current >= 1) ? this.pag.offset -= this.pag.limit : this.pag.current = 1
+    }
+    this.localStorage.pagination = this.pag.current;
+    this.saveLocalStorage();
+    this.listPokemon();
+    console.log(this.pag)
+  }
 
+  //Saved data on LocalStorage
 
+  public saveLocalStorage(): void {
+    localStorage.setItem('info', JSON.stringify(this.localStorage));
+  }
+
+  public getLocalStorage(): { pagination: number, fav: number[], dark: boolean, listFav: boolean, urlImg: string, view: boolean } {
+    const data = localStorage.getItem('info');
+    return data ? JSON.parse(data) : this.localStorage;
+  }
+
+  public darkMode(): void {
+    this.localStorage.dark = !this.localStorage.dark
+    this.saveLocalStorage();
+  }
+
+  public updateThisLocal(): void {
+    this.localStorage = this.getLocalStorage();
+  }
+
+  public listFavourites(bool: boolean): void {
+    this.localStorage.listFav = !this.getLocalStorage().listFav;
+    this.saveLocalStorage();
+    this.listPokemon(bool);
+  }
+
+  public switchView(): void {
+    this.views = !this.views;
+    this.localStorage.view = this.views;
+    this.saveLocalStorage();
+    console.log(this.views)
+  }
+  //Api request
   public listPokemon(isFav: boolean = false): void {
     const data = localStorage.getItem('info');
     let favLocal = data ? JSON.parse(data).fav : this.localStorage;
 
-    if(isFav){
-      let maxValue :number = (favLocal.length > 0) ? favLocal.reduce((a: number, b: number) => Math.max(a,b)) : 0;
+    if (isFav) {
+      let maxValue: number = (favLocal.length > 0) ? favLocal.reduce((a: number, b: number) => Math.max(a, b)) : 0;
       this.servicio.getPagination(0, maxValue).subscribe((response) => {
         this.pokemonListRequest = response.results;
         this.pag.total = Math.floor(response.count / this.pag.limit);
         this.pokemonList = [];
         this.pokemonListRequest.map((v) => {
           this.servicio.getInfoOnePokemon(v.url).subscribe((response) => {
-              if (favLocal.some((v: number) => v == response.id)) {
-                this.pokemonList.push({
-                  id: response.id,
-                  name: response.name,
-                  type: response.types,
-                  sprite: (response.id < 151)
-                    ? 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/transparent/' + response.id + '.png'
-                    : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/' + response.id + '.png',
-                  fav: true
-                });
-              }
-          });
-        });
-      });
-    }else {
-      this.servicio.getPagination(this.pag.offset, this.pag.limit).subscribe((response) => {
-        this.pokemonListRequest = response.results;
-        this.pag.total = Math.floor(response.count / this.pag.limit);
-        this.pokemonList = [];
-        this.pokemonListRequest.map((v) => {
-          this.servicio.getInfoOnePokemon(v.url).subscribe((response) => {
+            if (favLocal.some((v: number) => v == response.id)) {
               this.pokemonList.push({
                 id: response.id,
                 name: response.name,
@@ -82,77 +106,43 @@ export class ListComponent {
                 sprite: (response.id < 151)
                   ? 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/transparent/' + response.id + '.png'
                   : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/' + response.id + '.png',
-                fav: (favLocal.filter((v: number) => v == response.id).length > 0) ? true : false
+                fav: true
               });
+            }
+          });
+        });
+      });
+    } else {
+      this.servicio.getPagination(this.pag.offset, this.pag.limit).subscribe((response) => {
+        this.pokemonListRequest = response.results;
+        this.pag.total = Math.floor(response.count / this.pag.limit);
+        this.pokemonList = [];
+        this.pokemonListRequest.map((v) => {
+          this.servicio.getInfoOnePokemon(v.url).subscribe((response) => {
+            this.pokemonList.push({
+              id: response.id,
+              name: response.name,
+              type: response.types,
+              sprite: (response.id < 151)
+                ? 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/transparent/' + response.id + '.png'
+                : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/' + response.id + '.png',
+              fav: (favLocal.filter((v: number) => v == response.id).length > 0) ? true : false
             });
           });
         });
+      });
     }
 
   }
 
-  public cntrlPages(isNext: boolean): void {
-  if(isNext) {
-    this.pag.current++;
-    (this.pag.current < this.pag.total) ? this.pag.offset += this.pag.limit : this.pag.current = this.pag.total;
-  } else if(!isNext) {
-    this.pag.current--;
-    (this.pag.current >= 1) ? this.pag.offset -= this.pag.limit : this.pag.current = 1
+
+  ngOnInit(): void {
+    this.localStorage.pagination = this.getLocalStorage().pagination;
+    this.pag.current = (this.localStorage.pagination) ? this.localStorage.pagination : this.getLocalStorage().pagination;
+    this.pag.offset = (this.pag.current - 1) * this.pag.limit;
+    this.saveLocalStorage()
+    this.listPokemon();
   }
-  this.localStorage.pagination = this.pag.current;
-  this.saveLocalStorage();
-  this.listPokemon();
-  console.log(this.pag)
-}
 
-  public darkMode(bool: boolean): void {
-  this.localStorage.dark = bool
-  this.saveLocalStorage();
-  console.log('list');
-  this.darkEmision.emit(bool);
-
-}
-
-  public saveLocalStorage(): void {
-  localStorage.setItem('info', JSON.stringify(this.localStorage));
-}
-
-  public getLocalStorage(): { pagination: number, fav: number[], dark: boolean, listFav:boolean,urlImg: string,view:boolean }
-  {
-  const data = localStorage.getItem('info');
-  return data ? JSON.parse(data) : this.localStorage;
-}
-  public checkThisLocal(): void {
-  this.localStorage = this.getLocalStorage();
-}
-public listFavourites(bool : boolean): void
-{
-  console.log('hola')
-    this.localStorage.listFav = !this.getLocalStorage().listFav;
-    this.saveLocalStorage();
-    this.listPokemon(bool);
-}
-public switchView() : void
-{
-  this.views = !this.views;
-  this.localStorage.view = this.views;
-  this.saveLocalStorage();
-  console.log(this.views)
-
-}
-
-ngOnInit(): void {
-  this.localStorage = this.getLocalStorage();
-
-  const pagUrl = this.urlPage.snapshot.paramMap.get('urlPage');
-  if(pagUrl) {
-    this.localStorage.pagination = (parseInt(pagUrl) == 0) ? 1 : parseFloat(pagUrl);
-    this.saveLocalStorage();
-  }
-    this.pag.current = (pagUrl) ? this.localStorage.pagination : this.getLocalStorage().pagination;
-  this.pag.offset = (this.pag.current - 1) * this.pag.limit;
-  this.listPokemon();
-
-}
 }
 

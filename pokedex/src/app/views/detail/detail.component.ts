@@ -18,6 +18,7 @@ export class DetailComponent {
   public pokemonDetail : DetailPokemonInterface = {id: 0}
   public pagUrl : string = '';
 
+  //api info
   public getPokemonBasics() : void {
 
     this.servicio.getInfoOnePokemon('', this.pokemonBasics.id, true).subscribe((response) => {

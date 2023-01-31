@@ -5,6 +5,7 @@
   (pagination)="cntrlPages($event)"
   (listFavourites)="listFavourites($event)"
   (sendview)="switchView()"
+  (darkEmision)="darkMode()"
 
 ></app-nav-list>
 <div class="container-fluid">
@@ -18,7 +19,7 @@
           [pokemonSprite]="pokemon.sprite"
           [fav]="pokemon.fav"
           [view]="views"
-          (sendFavourite)="checkThisLocal()"
+          (sendFavourite)="updateThisLocal()"
         ></app-card>
     </a>
     </div>

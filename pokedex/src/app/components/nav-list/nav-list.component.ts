@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { TitleStrategy } from '@angular/router';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class NavListComponent {
   @Output() pagination = new EventEmitter<boolean>();
   @Output() listFavourites = new EventEmitter<boolean>();
   @Output() sendview = new EventEmitter<boolean>();
+  @Output() darkEmision = new EventEmitter<boolean>();
   public fav : boolean = false;
   public dark : boolean = false;
 
@@ -49,12 +51,12 @@ export class NavListComponent {
       root.style.setProperty('--bg-components-bright', '#EDEDED');
       root.style.setProperty('--bg-components-dark', '#605E5E');
     }
-    //this.darkService.toggleDark()
+    this.darkEmision.emit();
   }
 
   ngOnInit(){
     const data = localStorage.getItem('info');
-    this.dark = data ? !JSON.parse(data).dark : true;
+    this.dark = data ? !JSON.parse(data).dark : false;
     this.fav = data ? JSON.parse(data).listFav : false;
     this.view = data ? JSON.parse(data).view : false;
   }
