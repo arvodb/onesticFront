@@ -1,8 +1,8 @@
 # Pokedex
-En este proyecto podrás en contrar la prueba de front-end para la empresa onestic.
+En este proyecto podrás encontrar la prueba de front-end para la empresa onestic.
 
-- url repositorio: https://github.com/arvodb/onesticFron
-- url gh-pages: https://arvodb.github.io/onesticFront/
+- url repositorio: https://github.com/arvodb/onesticFront
+- url gh-pages: https://arvodb.github.io/onesticFront/ => //*Mozilla Firefox recomendado*
 
 # Introducción
 
@@ -18,7 +18,7 @@ Me gustaría comentar simplemente, que he disfrutado enormemente de este *micro-
 4. Desde el navegador (*he usado mozilla aunque puedes usar tu navegador favorito*) acceder a: localhost:4200
 
 - *Quizás quieras lanzarlo primero antes de seguir leyendo*
-- O quizás quieres hecharle un vistazo ya! => https://arvodb.github.io/onesticFront/
+- ¡O quizás quieres hecharle un vistazo ya! => https://arvodb.github.io/onesticFront/
 
 # Herramientas
 
@@ -69,10 +69,19 @@ Me gustaría haber investigado sobre la forma más eficiente de manejar los dato
 
 Indagar en usar un método de búsqueda para los favoritos más eficiente.
 
-Se queda sin terminar método de despliegue de la aplicación mediante dockerfile. Aunque hice algunas pruebas, no he querido implementarlo por que no conseguí que se desplegase de forma eficiente y al final llevaba más tiempo que visualizandolo por *npm install ; ng serve*
+Se queda sin terminar método de despliegue de la aplicación mediante dockerfile. Aunque hice algunas pruebas, no he querido implementarlo por que no conseguí que se desplegase de forma eficiente y al final llevaba más tiempo que visualizandolo por *npm install ; ng serve* 
+
+Pulir, pulir y pulir. Siento que he dejado muchos detalles a mejorar:
+ - Formatear datos de pesos y medidas.
+ - Formatear imágenes *no-pixel* mal encajadas.
+ - Verificar el correcto funcionamiento en todos los navegadores.
+ - Terminar un sistema de búsqueda por id o diferentes filtros.
+ - Diseño responsive, lo siento, es deformación profesional como diseñador gráfico. Me duele en alma ver los textos que salen de sus contendores, imágenes que no se adaptan bien.. etc.
+ 
+ 
 
 # Conclusión
 
-Si has llegado hasta aquí, gracias por leer esta extensa memoria. No se resumir, no es uno de mis fuertes. Muchas gracias por la oprtunidad. Ha sido una experiencia gratificante y que me ha ayudado mucho a afianzar mis conocimientos y promover mis inquietudes sobre las tecnologías involucradas en frontend.
+Si has llegado hasta aquí, gracias por leer esta extensa memoria. No se resumir, no es uno de mis fuertes. Muchas gracias por la oprtunidad. Ha sido una experiencia gratificante y que me ha ayudado mucho a afianzar mis conocimientos y promover mis inquietudes sobre las tecnologías involucradas en frontend. Sin duda es un mini-proyecto que terminaré de pulir en profundiad cuando tenga tiempo
 
 Espero que os haya gustado mi propuesta, le he dedicado especial mimo.
