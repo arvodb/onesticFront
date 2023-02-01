@@ -2,7 +2,7 @@
   <div *ngSwitchCase="false">
     <div class="card-header d-flex justify-content-between d-flex align-items-center">
       <p class="pokemon-id">#{{pokemonId}}</p>
-      <img (click)="saveFav(pokemonId)" class=""
+      <img (click)="saveFav(pokemonId)" class="pokemon-fav"
         src="{{fav ? 'assets/img/star-black.png' :'assets/img/star-white.png'}}" alt="">
     </div>
     <div (click)="savePokemon()" class="card-pokemon" [routerLink]="['/detail/'+pokemonId]">

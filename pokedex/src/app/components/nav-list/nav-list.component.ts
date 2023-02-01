@@ -46,11 +46,13 @@ export class NavListComponent {
       root.style.setProperty('--main-txt-bright', '#EDEDED');
       root.style.setProperty(' --bg-components-bright', '#605E5E');
       root.style.setProperty('--bg-components-dark', '#EDEDED');
+      root.style.setProperty('--filter','100%')
     }else {
       root.style.setProperty('--bg-bright', '#FEFEFE');
       root.style.setProperty('--main-txt-bright', '#302828');
       root.style.setProperty('--bg-components-bright', '#EDEDED');
       root.style.setProperty('--bg-components-dark', '#605E5E');
+      root.style.setProperty('--filter','0%')
     }
     this.darkEmision.emit();
   }
