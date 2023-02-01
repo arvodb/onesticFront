@@ -2,6 +2,7 @@
 <app-header-list></app-header-list>
 <app-nav-list
   [pag]="pag"
+  [dark]="dark"
   (pagination)="cntrlPages($event)"
   (listFavourites)="listFavourites($event)"
   (sendview)="switchView()"

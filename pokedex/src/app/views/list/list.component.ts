@@ -26,6 +26,7 @@ export class ListComponent {
     current: 1, //max value = 63
     total: 0
   }
+  public dark : boolean = false;
   public pokemonList: ListPokemonInterface[] = []
   public pokemonListRequest: Detail[] = [];
   public pokemonName: string = '';
@@ -50,7 +51,6 @@ export class ListComponent {
     this.localStorage.pagination = this.pag.current;
     this.saveLocalStorage();
     this.listPokemon();
-    console.log(this.pag)
   }
 
   //Saved data on LocalStorage
@@ -66,6 +66,7 @@ export class ListComponent {
 
   public darkMode(): void {
     this.localStorage.dark = !this.localStorage.dark
+    this.dark = this.localStorage.dark
     this.saveLocalStorage();
   }
 
@@ -83,7 +84,6 @@ export class ListComponent {
     this.views = !this.views;
     this.localStorage.view = this.views;
     this.saveLocalStorage();
-    console.log(this.views)
   }
   //Api request
   public listPokemon(isFav: boolean = false): void {
@@ -137,11 +137,14 @@ export class ListComponent {
 
 
   ngOnInit(): void {
-    this.localStorage.pagination = this.getLocalStorage().pagination;
+
+    this.localStorage = this.getLocalStorage();
+    this.views = this.localStorage.view;
+    this.dark = this.localStorage.dark;
     this.pag.current = (this.localStorage.pagination) ? this.localStorage.pagination : this.getLocalStorage().pagination;
     this.pag.offset = (this.pag.current - 1) * this.pag.limit;
-    this.saveLocalStorage()
-    this.listPokemon();
+    this.saveLocalStorage();
+    (this.localStorage.listFav) ? this.listPokemon(true) : this.listPokemon();
   }
 
 }

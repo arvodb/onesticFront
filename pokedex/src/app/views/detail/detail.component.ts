@@ -36,7 +36,7 @@ export class DetailComponent {
         weight: response.weight
 
       }
-      console.log(this.pokemonDetail)
+
     });
   }
   public getPokemonDetailInfo(id : number) : void {
@@ -46,7 +46,7 @@ export class DetailComponent {
       this.pokemonDetail.genera = response.genera.filter(v  => (v.language.name === 'en')).map( v => v.genus).toString();
       this.pokemonDetail.flavourText = response.flavor_text_entries[0].flavor_text;
       this.pokemonDetail.habitat = response.habitat.name;
-      console.log(this.pokemonDetail);
+
 
       this.servicio.getEvolution(response.evolution_chain.url).subscribe((response) => {
         let allEvolutionsNames = []
@@ -71,7 +71,7 @@ export class DetailComponent {
 
     this.getPokemonBasics();
     this.getPokemonDetailInfo(this.pokemonBasics.id);
-    console.log(this.pokemonDetail);
+
 
     const data = localStorage.getItem('info');
     let local =  data ? JSON.parse(data) : '';

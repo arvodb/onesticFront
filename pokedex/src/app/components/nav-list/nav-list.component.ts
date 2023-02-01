@@ -17,7 +17,7 @@ export class NavListComponent {
   @Output() sendview = new EventEmitter<boolean>();
   @Output() darkEmision = new EventEmitter<boolean>();
   public fav : boolean = false;
-  public dark : boolean = false;
+  @Input() dark : boolean = false;
 
   public switchViews() : void
   {
@@ -36,11 +36,12 @@ export class NavListComponent {
       this.pagination.emit(bool);
     }
   }
-  public darkMode(bool : boolean) : void
+  public darkMode(bool : boolean = false) : void
   {
-    this.dark = !this.dark;
+
     const root = document.documentElement;
-    if(!this.dark){
+
+    if(!this.dark && !bool){
       root.style.setProperty('--bg-bright', '#272727');
       root.style.setProperty('--main-txt-bright', '#EDEDED');
       root.style.setProperty(' --bg-components-bright', '#605E5E');
@@ -56,7 +57,7 @@ export class NavListComponent {
 
   ngOnInit(){
     const data = localStorage.getItem('info');
-    this.dark = data ? !JSON.parse(data).dark : false;
+    this.dark = data ? JSON.parse(data).dark : false;
     this.fav = data ? JSON.parse(data).listFav : false;
     this.view = data ? JSON.parse(data).view : false;
   }
