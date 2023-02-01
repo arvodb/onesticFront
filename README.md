@@ -1,7 +1,8 @@
 # Pokedex
 En este proyecto podrás en contrar la prueba de front-end para la empresa onestic.
 
-url : https://github.com/arvodb/onesticFron
+- url repositorio: https://github.com/arvodb/onesticFron
+- url gh-pages: https://arvodb.github.io/onesticFront/
 
 # Introducción
 
@@ -16,7 +17,8 @@ Me gustaría comentar simplemente, que he disfrutado enormemente de este *micro-
 3. Desde consola lanzar *ng serve*
 4. Desde el navegador (*he usado mozilla aunque puedes usar tu navegador favorito*) acceder a: localhost:4200
 
-## Quizás quieras lanzarlo primero antes de seguir leyendo
+- *Quizás quieras lanzarlo primero antes de seguir leyendo*
+- O quizás quieres hecharle un vistazo ya! => https://arvodb.github.io/onesticFront/
 
 # Herramientas
 
