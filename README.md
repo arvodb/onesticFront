@@ -17,8 +17,8 @@ Me gustaría comentar simplemente, que he disfrutado enormemente de este *micro-
 3. Desde consola lanzar *ng serve*
 4. Desde el navegador (*he usado mozilla aunque puedes usar tu navegador favorito*) acceder a: localhost:4200
 
-*Quizás quieras lanzarlo primero antes de seguir leyendo*
-O quizás quieres hecharle un vistazo ya! => https://arvodb.github.io/onesticFront/
+- *Quizás quieras lanzarlo primero antes de seguir leyendo*
+- O quizás quieres hecharle un vistazo ya! => https://arvodb.github.io/onesticFront/
 
 # Herramientas
 
