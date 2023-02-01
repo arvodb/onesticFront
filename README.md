@@ -1,8 +1,8 @@
 # Pokedex
 En este proyecto podrás en contrar la prueba de front-end para la empresa onestic.
 
-url repositorio: https://github.com/arvodb/onesticFron
-url gh-pages: https://arvodb.github.io/onesticFront/
+- url repositorio: https://github.com/arvodb/onesticFron
+- url gh-pages: https://arvodb.github.io/onesticFront/
 
 # Introducción
 
